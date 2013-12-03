@@ -49,11 +49,24 @@ SimpleStream.prototype.write = function(data) {
   }.bind(this))
 }
 
+var toStream = function(fn) {
+  return new SimpleStream(func)
+}
+
+var pipe = function(fns) {
+  var current
+  var streams = fns.map(function(fn) {
+    var stream = toStream(fn).on('error', callback)
+    if (current) current.pipe(stream)
+    return current = stream
+  })
+  return streams[0]
+}
+
 module.exports = {
   Stream: SimpleStream,
   SimpleStream: SimpleStream,
-  toStream: function(func) {
-    return new SimpleStream(func)
-  }
+  toStream: toStream,
+  pipe: pipe
 }
 
