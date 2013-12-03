@@ -50,7 +50,7 @@ SimpleStream.prototype.write = function(data) {
 }
 
 var toStream = function(fn) {
-  return new SimpleStream(func)
+  return new SimpleStream(fn)
 }
 
 var pipe = function(fns) {
