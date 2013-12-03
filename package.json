@@ -1,6 +1,6 @@
 {
   "name": "pipe-it",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "simple streams",
   "main": "index.js",
   "scripts": {

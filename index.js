@@ -53,7 +53,7 @@ var toStream = function(fn) {
   return new SimpleStream(fn)
 }
 
-var pipe = function(fns) {
+var pipe = function(fns, callback) {
   var current
   var streams = fns.map(function(fn) {
     var stream = toStream(fn).on('error', callback)
