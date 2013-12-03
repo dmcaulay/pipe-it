@@ -4,7 +4,7 @@
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 
-var Stream = module.exports = function(options) {
+var Stream = module.exports = function() {
   EventEmitter.call(this);
 
   function onError(err) {
@@ -27,7 +27,7 @@ Stream.prototype.pipe = function(dest) {
 };
 
 var SimpleStream = function(func) {
-  Stream.call(this, options)
+  Stream.call(this)
   this.func = func
   this.argCount = this.func.length
   if (this.argCount < 1 || this.argCount > 3) throw new Error("Creating SimpleStream with invalid arg count:" + this.argCount)
